@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{plantilla/base :: cabecera}"></head>
+    <body>
+        <header th:replace="~{plantilla/base :: encabezado}"></header>
+        <nav th:replace="~{plantilla/base :: barraNavegacion}"></nav>
+
+        <main class="container my-4">
+
+            <section class="row mb-4">
+                <div class="col-md-6">
+                    <h2>Sobre nuestra clínica</h2>
+                    <p><strong>Horario:</strong> Lunes a viernes de 7:30 a. m. a 4:30 p. m. y sábados de 7:30 a. m. a 11:30 a. m.</p>
+                    <p><strong>Ubicación:</strong> San José, Alajuelita, San Felipe, 100 metros este de la Escuela Los Pinos.</p>
+                    <p><strong>Especialidades:</strong></p>
+                    <ul>
+                        <li>Consulta general</li>
+                        <li>Vacunación</li>
+                        <li>Estética</li>
+                        <li>Cirugía</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <iframe class="w-100" height="300" src="https://www.youtube.com/embed/pezx3IfyUoQ"
+                            title="Cuidado de mascotas" allowfullscreen></iframe>
+                </div>
+            </section>
+
+            <section class="card text-center border-success mb-4">
+                <div class="card-header bg-success text-white">
+                    <h3 class="mb-0">Campaña del mes</h3>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Día de Spa y Estética</h4>
+                    <p class="card-text">
+                        Consiente a tu mascota con un día de baño, corte y cuidado de pelaje.
+                        Agenda tu cita este mes y deja a tu peludito luciendo increíble.
+                    </p>
+                </div>
+            </section>
+
+            <section class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h3 class="mb-0">Consultas</h3>
+                </div>
+                <div class="card-body">
+                    <div th:if="${agradecimiento}" class="alert alert-success" role="alert">
+                        [[${agradecimiento}]]
+                    </div>
+                    <form th:action="@{/consulta}" method="post">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" class="form-control" required/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="correo" class="form-label">Correo electrónico</label>
+                            <input type="email" id="correo" name="correo" class="form-control" required/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mascota" class="form-label">Nombre de la mascota</label>
+                            <input type="text" id="mascota" name="mascota" class="form-control" required/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mensaje" class="form-label">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" class="form-control" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Enviar consulta</button>
+                    </form>
+                </div>
+            </section>
+
+        </main>
+
+        <footer th:replace="~{plantilla/base :: piePagina}"></footer>
+    </body>
+</html>
